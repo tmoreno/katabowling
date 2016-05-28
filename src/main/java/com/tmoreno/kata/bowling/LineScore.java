@@ -18,7 +18,7 @@ public class LineScore {
 			if (SPARE_SYMBOL.equals(line[i])) {
 				score += spareScore(i);
 			}
-			else if (!MISS_SYMBOL.equals(line[i])) {
+			else if (!MISS_SYMBOL.equals(line[i]) && i < 20) {
 				score += normalScore(i);
 			}
 		}
