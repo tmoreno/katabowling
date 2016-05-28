@@ -16,15 +16,23 @@ public class LineScore {
 
 		for (int i = 0; i < line.length; i++) {
 			if (SPARE_SYMBOL.equals(line[i])) {
-				score += 10 + Integer.parseInt(line[i + 1])
-						- Integer.parseInt(line[i - 1]);
+				score += spareScore(i);
 			}
 			else if (!MISS_SYMBOL.equals(line[i])) {
-				score += Integer.parseInt(line[i]);
+				score += normalScore(i);
 			}
 		}
 
 		return score;
+	}
+
+	private int normalScore(int i) {
+		return Integer.parseInt(line[i]);
+	}
+
+	private int spareScore(int i) {
+		return 10 + Integer.parseInt(line[i + 1])
+				- Integer.parseInt(line[i - 1]);
 	}
 
 }
