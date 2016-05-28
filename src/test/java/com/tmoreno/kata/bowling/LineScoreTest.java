@@ -5,38 +5,41 @@ import org.junit.Test;
 
 public class LineScoreTest {
 
+	private String line;
+	private LineScore lineScore;
+
 	@Test
 	public void allMissGetZero() {
-		String line = "--------------------";
+		line = "--------------------";
 
-		LineScore lineScore = new LineScore(line);
+		lineScore = new LineScore(line);
 
 		Assert.assertEquals(0, lineScore.calc());
 	}
 
 	@Test
 	public void knockDownOnePinFirstTry() {
-		String line = "1-------------------";
+		line = "1-------------------";
 
-		LineScore lineScore = new LineScore(line);
+		lineScore = new LineScore(line);
 
 		Assert.assertEquals(1, lineScore.calc());
 	}
 
 	@Test
 	public void knockDownOnePinLastTry() {
-		String line = "-------------------1";
+		line = "-------------------1";
 
-		LineScore lineScore = new LineScore(line);
+		lineScore = new LineScore(line);
 
 		Assert.assertEquals(1, lineScore.calc());
 	}
 
 	@Test
 	public void knockDownTwoPinsSameFrame() {
-		String line = "11------------------";
+		line = "11------------------";
 
-		LineScore lineScore = new LineScore(line);
+		lineScore = new LineScore(line);
 
 		Assert.assertEquals(2, lineScore.calc());
 	}
