@@ -2,18 +2,18 @@ package com.tmoreno.kata.bowling;
 
 public class LineScore {
 
-	private String line;
+	private String[] line;
 
 	public LineScore(String line) {
-		this.line = line;
+		this.line = line.split("");
 	}
 
 	public int calc() {
 		int score = 0;
 
-		for (int i = 0; i < line.length(); i++) {
-			if (line.charAt(i) != '-') {
-				score += Character.getNumericValue(line.charAt(i));
+		for (int i = 0; i < line.length; i++) {
+			if (!"-".equals(line[i])) {
+				score += Integer.parseInt(line[i]);
 			}
 		}
 
