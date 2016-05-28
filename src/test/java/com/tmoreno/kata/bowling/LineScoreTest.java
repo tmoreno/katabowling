@@ -43,4 +43,13 @@ public class LineScoreTest {
 
 		Assert.assertEquals(2, lineScore.calc());
 	}
+
+	@Test
+	public void knockDownPinsAllFrames() {
+		line = "11111111111111111111";
+
+		lineScore = new LineScore(line);
+
+		Assert.assertEquals(20, lineScore.calc());
+	}
 }
