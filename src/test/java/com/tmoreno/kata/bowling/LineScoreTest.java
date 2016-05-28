@@ -61,4 +61,13 @@ public class LineScoreTest {
 
 		Assert.assertEquals(12, lineScore.calc());
 	}
+
+	@Test
+	public void whenGetASpareAtTheEndGetOneExtraThrow() {
+		line = "------------------1/1";
+
+		lineScore = new LineScore(line);
+
+		Assert.assertEquals(11, lineScore.calc());
+	}
 }
