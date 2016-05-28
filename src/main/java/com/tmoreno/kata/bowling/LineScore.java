@@ -2,6 +2,8 @@ package com.tmoreno.kata.bowling;
 
 public class LineScore {
 
+	private static final String MISS_SYMBOL = "-";
+
 	private String[] line;
 
 	public LineScore(String line) {
@@ -12,7 +14,7 @@ public class LineScore {
 		int score = 0;
 
 		for (int i = 0; i < line.length; i++) {
-			if (!"-".equals(line[i])) {
+			if (!MISS_SYMBOL.equals(line[i])) {
 				score += Integer.parseInt(line[i]);
 			}
 		}
