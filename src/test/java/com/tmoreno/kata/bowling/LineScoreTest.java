@@ -13,4 +13,13 @@ public class LineScoreTest {
 
 		Assert.assertEquals(0, lineScore.calc());
 	}
+
+	@Test
+	public void knockDownOnePinFirstTry() {
+		String line = "1-------------------";
+
+		LineScore lineScore = new LineScore(line);
+
+		Assert.assertEquals(1, lineScore.calc());
+	}
 }

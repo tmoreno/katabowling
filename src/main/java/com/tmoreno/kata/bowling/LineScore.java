@@ -9,7 +9,15 @@ public class LineScore {
 	}
 
 	public int calc() {
-		return 0;
+		int score = 0;
+
+		for (int i = 0; i < line.length(); i++) {
+			if (line.charAt(i) != '-') {
+				score += Character.getNumericValue(line.charAt(i));
+			}
+		}
+
+		return score;
 	}
 
 }
