@@ -16,13 +16,13 @@ public class LineScore {
 		int score = 0;
 
 		for (int i = 0; i < line.length; i++) {
-			if (SPARE_SYMBOL.equals(line[i])) {
+			if (isSpare(i)) {
 				score += spareScore(i);
 			}
-			else if (STRIKE_SYMBOL.equals(line[i])) {
+			else if (isStrike(i)) {
 				score += strikeScore(i);
 			}
-			else if (!MISS_SYMBOL.equals(line[i]) && !isBonus(i)) {
+			else if (!isMiss(i) && !isBonus(i)) {
 				score += normalScore(i);
 			}
 		}
@@ -30,8 +30,20 @@ public class LineScore {
 		return score;
 	}
 
+	private boolean isSpare(int i) {
+		return SPARE_SYMBOL.equals(line[i]);
+	}
+
+	private boolean isStrike(int i) {
+		return STRIKE_SYMBOL.equals(line[i]);
+	}
+
+	private boolean isMiss(int i) {
+		return MISS_SYMBOL.equals(line[i]);
+	}
+
 	private boolean isBonus(int i) {
-		return i >= 20 || (i == 19 && STRIKE_SYMBOL.equals(line[i - 1]));
+		return i >= 20 || (i == 19 && isStrike(i - 1));
 	}
 
 	private int normalScore(int i) {
