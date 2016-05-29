@@ -47,16 +47,26 @@ public class LineScore {
 	}
 
 	private int normalScore(int i) {
-		return Integer.parseInt(line[i]);
+		return getValue(i);
 	}
 
 	private int spareScore(int i) {
-		return 10 + Integer.parseInt(line[i + 1])
-				- Integer.parseInt(line[i - 1]);
+		return 10 + getValue(i + 1) - getValue(i - 1);
 	}
 
 	private int strikeScore(int i) {
-		return 10 + Integer.parseInt(line[i + 1])
-				+ Integer.parseInt(line[i + 2]);
+		return 10 + getValue(i + 1) + getValue(i + 2);
+	}
+
+	private int getValue(int i) {
+		if (isStrike(i)) {
+			return 10;
+		}
+		else if (isMiss(i)) {
+			return 0;
+		}
+		else {
+			return Integer.parseInt(line[i]);
+		}
 	}
 }
