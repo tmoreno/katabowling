@@ -25,4 +25,13 @@ public class LineScoreWithStrikesTest {
 
 		Assert.assertEquals(12, lineScore.calc());
 	}
+
+	@Test
+	public void twoStrikes() {
+		line = "XX------------------";
+
+		lineScore = new LineScore(line);
+
+		Assert.assertEquals(30, lineScore.calc());
+	}
 }
