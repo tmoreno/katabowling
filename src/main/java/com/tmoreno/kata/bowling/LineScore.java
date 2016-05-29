@@ -22,12 +22,16 @@ public class LineScore {
 			else if (STRIKE_SYMBOL.equals(line[i])) {
 				score += strikeScore(i);
 			}
-			else if (!MISS_SYMBOL.equals(line[i]) && i < 20) {
+			else if (!MISS_SYMBOL.equals(line[i]) && !isBonus(i)) {
 				score += normalScore(i);
 			}
 		}
 
 		return score;
+	}
+
+	private boolean isBonus(int i) {
+		return i >= 20 || (i == 19 && STRIKE_SYMBOL.equals(line[i - 1]));
 	}
 
 	private int normalScore(int i) {
