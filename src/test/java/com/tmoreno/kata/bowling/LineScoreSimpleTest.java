@@ -3,7 +3,7 @@ package com.tmoreno.kata.bowling;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class LineScoreTest {
+public class LineScoreSimpleTest {
 
 	private String line;
 	private LineScore lineScore;
@@ -51,23 +51,5 @@ public class LineScoreTest {
 		lineScore = new LineScore(line);
 
 		Assert.assertEquals(20, lineScore.calc());
-	}
-
-	@Test
-	public void whenGetASpareAddNextThrowKnockedDownPins() {
-		line = "1/1-----------------";
-
-		lineScore = new LineScore(line);
-
-		Assert.assertEquals(12, lineScore.calc());
-	}
-
-	@Test
-	public void whenGetASpareAtTheEndGetOneExtraThrow() {
-		line = "------------------1/1";
-
-		lineScore = new LineScore(line);
-
-		Assert.assertEquals(11, lineScore.calc());
 	}
 }
