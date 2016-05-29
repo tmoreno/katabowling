@@ -16,4 +16,13 @@ public class LineScoreWithStrikesTest {
 
 		Assert.assertEquals(14, lineScore.calc());
 	}
+
+	@Test
+	public void whenGetAStrikeAtTheEndGetTwoExtraThrow() {
+		line = "------------------X11";
+
+		lineScore = new LineScore(line);
+
+		Assert.assertEquals(12, lineScore.calc());
+	}
 }
