@@ -25,4 +25,13 @@ public class LineScoreWithSparesTest {
 
 		Assert.assertEquals(11, lineScore.calc());
 	}
+
+	@Test
+	public void complexLine() {
+		line = "5/5/5/5/5/5/5/5/5/5/5";
+
+		lineScore = new LineScore(line);
+
+		Assert.assertEquals(150, lineScore.calc());
+	}
 }

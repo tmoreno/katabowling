@@ -52,4 +52,13 @@ public class LineScoreSimpleTest {
 
 		Assert.assertEquals(20, lineScore.calc());
 	}
+
+	@Test
+	public void complexLine() {
+		line = "9-9-9-9-9-9-9-9-9-9-";
+
+		lineScore = new LineScore(line);
+
+		Assert.assertEquals(90, lineScore.calc());
+	}
 }
