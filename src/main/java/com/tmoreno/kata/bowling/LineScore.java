@@ -19,7 +19,7 @@ public class LineScore {
 			if (isSpare(i)) {
 				score += spareScore(i);
 			}
-			else if (isStrike(i)) {
+			else if (isStrike(i) && !isBonus(i)) {
 				score += strikeScore(i);
 			}
 			else if (!isMiss(i) && !isBonus(i)) {
@@ -43,7 +43,9 @@ public class LineScore {
 	}
 
 	private boolean isBonus(int i) {
-		return i >= 20 || (i == 19 && isStrike(i - 1));
+		return (i == line.length - 1 && isSpare(i - 1))
+				|| (i == line.length - 1 && isStrike(i - 2))
+				|| (i == line.length - 2 && isStrike(i - 1));
 	}
 
 	private int normalScore(int i) {
