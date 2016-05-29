@@ -34,4 +34,13 @@ public class LineScoreWithStrikesTest {
 
 		Assert.assertEquals(30, lineScore.calc());
 	}
+
+	@Test
+	public void complex() {
+		line = "XXXXXXXXXXXX";
+
+		lineScore = new LineScore(line);
+
+		Assert.assertEquals(300, lineScore.calc());
+	}
 }
