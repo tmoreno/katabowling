@@ -47,9 +47,9 @@ public class LineScoreWithStrikesTest {
 
 	@Test
 	public void complex() {
-		line = "XXXXXXXXXXXX";
+		line2 = lineParser.parse("XXXXXXXXXXXX");
 
-		lineScore = new LineScore(line);
+		lineScore = new LineScore(line2);
 
 		Assert.assertEquals(300, lineScore.calc());
 	}
