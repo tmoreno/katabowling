@@ -1,18 +1,28 @@
 package com.tmoreno.kata.bowling;
 
+import java.util.List;
+
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 public class LineScoreWithStrikesTest {
 
 	private String line;
+	private List<Roll> line2;
+	private LineParser lineParser;
 	private LineScore lineScore;
+
+	@Before
+	public void setUp() {
+		lineParser = new LineParser();
+	}
 
 	@Test
 	public void whenGetAStrikeAddNextTwoRollsKnockedDownPins() {
-		line = "X11----------------";
+		line2 = lineParser.parse("X11----------------");
 
-		lineScore = new LineScore(line);
+		lineScore = new LineScore(line2);
 
 		Assert.assertEquals(14, lineScore.calc());
 	}
