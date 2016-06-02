@@ -3,12 +3,8 @@ package com.tmoreno.kata.bowling;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.tmoreno.kata.bowling.roll.BonusRoll;
-import com.tmoreno.kata.bowling.roll.MissRoll;
 import com.tmoreno.kata.bowling.roll.Roll;
-import com.tmoreno.kata.bowling.roll.SpareRoll;
-import com.tmoreno.kata.bowling.roll.StrikeRoll;
-import com.tmoreno.kata.bowling.roll.WithPointsRoll;
+import com.tmoreno.kata.bowling.roll.RollFactory;
 
 public class LineParser {
 
@@ -24,28 +20,28 @@ public class LineParser {
 		String roll;
 		for (int i = 0; i < lineArray.length; i++) {
 			if (isBonus(i, lineArray)) {
-				line.add(new BonusRoll());
+				line.add(RollFactory.createBonusRoll());
 			}
 			else {
 				roll = lineArray[i];
 
 				switch (roll) {
 				case MISS_SYMBOL:
-					line.add(new MissRoll());
+					line.add(RollFactory.createMissRoll());
 					break;
 
 				case SPARE_SYMBOL:
-					line.add(new SpareRoll(getValue(lineArray[i - 1]),
-							getValue(lineArray[i + 1])));
+					line.add(RollFactory.createSpareRoll(lineArray[i - 1],
+							lineArray[i + 1]));
 					break;
 
 				case STRIKE_SYMBOL:
-					line.add(new StrikeRoll(getValue(lineArray[i + 1]),
-							getValue(lineArray[i + 2])));
+					line.add(RollFactory.createStrikeRoll(lineArray[i + 1],
+							lineArray[i + 2]));
 					break;
 
 				default:
-					line.add(new WithPointsRoll(getValue(roll)));
+					line.add(RollFactory.createWithPointsRoll(roll));
 					break;
 				}
 			}
@@ -66,18 +62,6 @@ public class LineParser {
 		return (i == line.length - 1 && isSpare(i - 1, line))
 				|| (i == line.length - 1 && isStrike(i - 2, line))
 				|| (i == line.length - 2 && isStrike(i - 1, line));
-	}
-
-	private int getValue(String roll) {
-		if (STRIKE_SYMBOL.equals(roll)) {
-			return 10;
-		}
-		else if (MISS_SYMBOL.equals(roll)) {
-			return 0;
-		}
-		else {
-			return Integer.parseInt(roll);
-		}
 	}
 
 }
