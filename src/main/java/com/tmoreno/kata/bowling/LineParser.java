@@ -62,7 +62,10 @@ public class LineParser {
 	}
 
 	private int getValue(String roll) {
-		if (MISS_SYMBOL.equals(roll)) {
+		if (STRIKE_SYMBOL.equals(roll)) {
+			return 10;
+		}
+		else if (MISS_SYMBOL.equals(roll)) {
 			return 0;
 		}
 		else {
