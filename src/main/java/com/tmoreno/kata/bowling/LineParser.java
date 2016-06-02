@@ -17,34 +17,34 @@ public class LineParser {
 
 		List<Roll> line = new ArrayList<Roll>();
 
-		String roll;
+		Roll roll;
 		for (int i = 0; i < lineArray.length; i++) {
 			if (isBonus(i, lineArray)) {
-				line.add(RollFactory.createBonusRoll());
+				roll = RollFactory.createBonusRoll();
 			}
 			else {
-				roll = lineArray[i];
-
-				switch (roll) {
+				switch (lineArray[i]) {
 				case MISS_SYMBOL:
-					line.add(RollFactory.createMissRoll());
+					roll = RollFactory.createMissRoll();
 					break;
 
 				case SPARE_SYMBOL:
-					line.add(RollFactory.createSpareRoll(lineArray[i - 1],
-							lineArray[i + 1]));
+					roll = RollFactory.createSpareRoll(lineArray[i - 1],
+							lineArray[i + 1]);
 					break;
 
 				case STRIKE_SYMBOL:
-					line.add(RollFactory.createStrikeRoll(lineArray[i + 1],
-							lineArray[i + 2]));
+					roll = RollFactory.createStrikeRoll(lineArray[i + 1],
+							lineArray[i + 2]);
 					break;
 
 				default:
-					line.add(RollFactory.createWithPointsRoll(roll));
+					roll = RollFactory.createWithPointsRoll(lineArray[i]);
 					break;
 				}
 			}
+
+			line.add(roll);
 		}
 
 		return line;
