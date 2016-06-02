@@ -38,9 +38,9 @@ public class LineScoreWithStrikesTest {
 
 	@Test
 	public void twoStrikes() {
-		line = "XX------------------";
+		line2 = lineParser.parse("XX------------------");
 
-		lineScore = new LineScore(line);
+		lineScore = new LineScore(line2);
 
 		Assert.assertEquals(30, lineScore.calc());
 	}
