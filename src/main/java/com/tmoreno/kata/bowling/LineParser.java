@@ -16,7 +16,7 @@ public class LineParser {
 
 		String roll;
 		for (int i = 0; i < lineArray.length; i++) {
-			if (i == 20) {
+			if (isBonus(i, lineArray)) {
 				line.add(new BonusRoll());
 			}
 			else {
@@ -45,6 +45,20 @@ public class LineParser {
 		}
 
 		return line;
+	}
+
+	private boolean isSpare(int i, String[] line) {
+		return SPARE_SYMBOL.equals(line[i]);
+	}
+
+	private boolean isStrike(int i, String[] line) {
+		return STRIKE_SYMBOL.equals(line[i]);
+	}
+
+	private boolean isBonus(int i, String[] line) {
+		return (i == line.length - 1 && isSpare(i - 1, line))
+				|| (i == line.length - 1 && isStrike(i - 2, line))
+				|| (i == line.length - 2 && isStrike(i - 1, line));
 	}
 
 	private int getValue(String roll) {

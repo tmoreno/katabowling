@@ -52,4 +52,12 @@ public class LineParserTest {
 
 		Assert.assertTrue(line.get(0) instanceof StrikeRoll);
 	}
+
+	@Test
+	public void parseStrikeWithBonus() {
+		line = lineParser.parse("------------------X11");
+
+		Assert.assertTrue(line.get(19) instanceof BonusRoll);
+		Assert.assertTrue(line.get(20) instanceof BonusRoll);
+	}
 }
