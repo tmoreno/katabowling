@@ -1,18 +1,28 @@
 package com.tmoreno.kata.bowling;
 
+import java.util.List;
+
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 public class LineScoreSimpleTest {
 
 	private String line;
+	private List<Roll> line2;
+	private LineParser lineParser;
 	private LineScore lineScore;
+
+	@Before
+	public void setUp() {
+		lineParser = new LineParser();
+	}
 
 	@Test
 	public void allMissGetZero() {
-		line = "--------------------";
+		line2 = lineParser.parse("--------------------");
 
-		lineScore = new LineScore(line);
+		lineScore = new LineScore(line2);
 
 		Assert.assertEquals(0, lineScore.calc());
 	}

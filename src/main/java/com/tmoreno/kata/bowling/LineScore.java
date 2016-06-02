@@ -1,5 +1,7 @@
 package com.tmoreno.kata.bowling;
 
+import java.util.List;
+
 public class LineScore {
 
 	private static final String MISS_SYMBOL = "-";
@@ -7,23 +9,35 @@ public class LineScore {
 	private static final String STRIKE_SYMBOL = "X";
 
 	private String[] line;
+	private List<Roll> line2;
 
 	public LineScore(String line) {
 		this.line = line.split("");
 	}
 
+	public LineScore(List<Roll> line2) {
+		this.line2 = line2;
+	}
+
 	public int calc() {
 		int score = 0;
 
-		for (int i = 0; i < line.length; i++) {
-			if (isSpare(i)) {
-				score += spareScore(i);
+		if (line != null) {
+			for (int i = 0; i < line.length; i++) {
+				if (isSpare(i)) {
+					score += spareScore(i);
+				}
+				else if (isStrike(i) && !isBonus(i)) {
+					score += strikeScore(i);
+				}
+				else if (!isMiss(i) && !isBonus(i)) {
+					score += normalScore(i);
+				}
 			}
-			else if (isStrike(i) && !isBonus(i)) {
-				score += strikeScore(i);
-			}
-			else if (!isMiss(i) && !isBonus(i)) {
-				score += normalScore(i);
+		}
+		else {
+			for (Roll roll : line2) {
+				score += roll.getScore();
 			}
 		}
 

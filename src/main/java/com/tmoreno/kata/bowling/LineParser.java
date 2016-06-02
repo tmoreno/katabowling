@@ -19,7 +19,7 @@ public class LineParser {
 				break;
 
 			default:
-				line.add(new WithPointsRoll());
+				line.add(new WithPointsRoll(Integer.parseInt(roll)));
 				break;
 			}
 		}
