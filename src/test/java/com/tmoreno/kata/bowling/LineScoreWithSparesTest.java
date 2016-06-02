@@ -29,9 +29,9 @@ public class LineScoreWithSparesTest {
 
 	@Test
 	public void whenGetASpareAtTheEndGetOneExtraThrow() {
-		line = "------------------1/1";
+		line2 = lineParser.parse("------------------1/1");
 
-		lineScore = new LineScore(line);
+		lineScore = new LineScore(line2);
 
 		Assert.assertEquals(11, lineScore.calc());
 	}
