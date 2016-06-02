@@ -29,45 +29,45 @@ public class LineScoreSimpleTest {
 
 	@Test
 	public void knockDownOnePinFirstTry() {
-		line = "1-------------------";
+		line2 = lineParser.parse("1-------------------");
 
-		lineScore = new LineScore(line);
+		lineScore = new LineScore(line2);
 
 		Assert.assertEquals(1, lineScore.calc());
 	}
 
 	@Test
 	public void knockDownOnePinLastTry() {
-		line = "-------------------1";
+		line2 = lineParser.parse("-------------------1");
 
-		lineScore = new LineScore(line);
+		lineScore = new LineScore(line2);
 
 		Assert.assertEquals(1, lineScore.calc());
 	}
 
 	@Test
 	public void knockDownTwoPinsSameFrame() {
-		line = "11------------------";
+		line2 = lineParser.parse("11------------------");
 
-		lineScore = new LineScore(line);
+		lineScore = new LineScore(line2);
 
 		Assert.assertEquals(2, lineScore.calc());
 	}
 
 	@Test
 	public void knockDownPinsAllFrames() {
-		line = "11111111111111111111";
+		line2 = lineParser.parse("11111111111111111111");
 
-		lineScore = new LineScore(line);
+		lineScore = new LineScore(line2);
 
 		Assert.assertEquals(20, lineScore.calc());
 	}
 
 	@Test
 	public void complexLine() {
-		line = "9-9-9-9-9-9-9-9-9-9-";
+		line2 = lineParser.parse("9-9-9-9-9-9-9-9-9-9-");
 
-		lineScore = new LineScore(line);
+		lineScore = new LineScore(line2);
 
 		Assert.assertEquals(90, lineScore.calc());
 	}
