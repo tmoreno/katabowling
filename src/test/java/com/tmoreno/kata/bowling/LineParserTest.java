@@ -32,4 +32,11 @@ public class LineParserTest {
 		Assert.assertTrue(line.get(0) instanceof WithPointsRoll);
 	}
 
+	@Test
+	public void parseOneSpare() {
+		line = lineParser.parse("1/------------------");
+
+		Assert.assertTrue(line.get(1) instanceof SpareRoll);
+	}
+
 }
