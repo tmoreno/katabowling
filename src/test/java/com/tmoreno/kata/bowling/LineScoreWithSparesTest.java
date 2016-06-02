@@ -8,8 +8,7 @@ import org.junit.Test;
 
 public class LineScoreWithSparesTest {
 
-	private String line;
-	private List<Roll> line2;
+	private List<Roll> line;
 	private LineParser lineParser;
 	private LineScore lineScore;
 
@@ -20,27 +19,27 @@ public class LineScoreWithSparesTest {
 
 	@Test
 	public void whenGetASpareAddNextThrowKnockedDownPins() {
-		line2 = lineParser.parse("1/1-----------------");
+		line = lineParser.parse("1/1-----------------");
 
-		lineScore = new LineScore(line2);
+		lineScore = new LineScore(line);
 
 		Assert.assertEquals(12, lineScore.calc());
 	}
 
 	@Test
 	public void whenGetASpareAtTheEndGetOneExtraThrow() {
-		line2 = lineParser.parse("------------------1/1");
+		line = lineParser.parse("------------------1/1");
 
-		lineScore = new LineScore(line2);
+		lineScore = new LineScore(line);
 
 		Assert.assertEquals(11, lineScore.calc());
 	}
 
 	@Test
 	public void complexLine() {
-		line2 = lineParser.parse("5/5/5/5/5/5/5/5/5/5/5");
+		line = lineParser.parse("5/5/5/5/5/5/5/5/5/5/5");
 
-		lineScore = new LineScore(line2);
+		lineScore = new LineScore(line);
 
 		Assert.assertEquals(150, lineScore.calc());
 	}
