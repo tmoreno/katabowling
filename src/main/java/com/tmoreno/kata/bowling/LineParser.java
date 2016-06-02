@@ -50,18 +50,17 @@ public class LineParser {
 		return line;
 	}
 
-	private boolean isSpare(int i, String[] line) {
-		return SPARE_SYMBOL.equals(line[i]);
-	}
-
-	private boolean isStrike(int i, String[] line) {
-		return STRIKE_SYMBOL.equals(line[i]);
-	}
-
 	private boolean isBonus(int i, String[] line) {
-		return (i == line.length - 1 && isSpare(i - 1, line))
-				|| (i == line.length - 1 && isStrike(i - 2, line))
-				|| (i == line.length - 2 && isStrike(i - 1, line));
+		return (i == line.length - 1 && isSpare(line[i - 1]))
+				|| (i == line.length - 1 && isStrike(line[i - 2]))
+				|| (i == line.length - 2 && isStrike(line[i - 1]));
 	}
 
+	private boolean isSpare(String symbol) {
+		return SPARE_SYMBOL.equals(symbol);
+	}
+
+	private boolean isStrike(String symbol) {
+		return STRIKE_SYMBOL.equals(symbol);
+	}
 }
