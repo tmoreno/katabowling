@@ -29,9 +29,9 @@ public class LineScoreWithStrikesTest {
 
 	@Test
 	public void whenGetAStrikeAtTheEndGetTwoExtraThrow() {
-		line = "------------------X11";
+		line2 = lineParser.parse("------------------X11");
 
-		lineScore = new LineScore(line);
+		lineScore = new LineScore(line2);
 
 		Assert.assertEquals(12, lineScore.calc());
 	}
