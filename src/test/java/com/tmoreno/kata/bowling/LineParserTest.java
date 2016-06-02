@@ -39,4 +39,10 @@ public class LineParserTest {
 		Assert.assertTrue(line.get(1) instanceof SpareRoll);
 	}
 
+	@Test
+	public void parseSpareWithBonus() {
+		line = lineParser.parse("-------------------/-");
+
+		Assert.assertTrue(line.get(20) instanceof BonusRoll);
+	}
 }

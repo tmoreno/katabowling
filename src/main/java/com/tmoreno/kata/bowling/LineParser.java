@@ -15,21 +15,26 @@ public class LineParser {
 
 		String roll;
 		for (int i = 0; i < lineArray.length; i++) {
-			roll = lineArray[i];
+			if (i == 20) {
+				line.add(new BonusRoll());
+			}
+			else {
+				roll = lineArray[i];
 
-			switch (roll) {
-			case MISS_SYMBOL:
-				line.add(new MissRoll());
-				break;
+				switch (roll) {
+				case MISS_SYMBOL:
+					line.add(new MissRoll());
+					break;
 
-			case SPARE_SYMBOL:
-				line.add(new SpareRoll(getValue(lineArray[i - 1]),
-						getValue(lineArray[i + 1])));
-				break;
+				case SPARE_SYMBOL:
+					line.add(new SpareRoll(getValue(lineArray[i - 1]),
+							getValue(lineArray[i + 1])));
+					break;
 
-			default:
-				line.add(new WithPointsRoll(getValue(roll)));
-				break;
+				default:
+					line.add(new WithPointsRoll(getValue(roll)));
+					break;
+				}
 			}
 		}
 
