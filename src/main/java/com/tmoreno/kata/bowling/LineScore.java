@@ -2,6 +2,8 @@ package com.tmoreno.kata.bowling;
 
 import java.util.List;
 
+import com.tmoreno.kata.bowling.roll.Roll;
+
 public class LineScore {
 
 	private static final String MISS_SYMBOL = "-";

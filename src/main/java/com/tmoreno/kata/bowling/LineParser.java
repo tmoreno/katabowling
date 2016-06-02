@@ -3,6 +3,13 @@ package com.tmoreno.kata.bowling;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.tmoreno.kata.bowling.roll.BonusRoll;
+import com.tmoreno.kata.bowling.roll.MissRoll;
+import com.tmoreno.kata.bowling.roll.Roll;
+import com.tmoreno.kata.bowling.roll.SpareRoll;
+import com.tmoreno.kata.bowling.roll.StrikeRoll;
+import com.tmoreno.kata.bowling.roll.WithPointsRoll;
+
 public class LineParser {
 
 	private static final String MISS_SYMBOL = "-";

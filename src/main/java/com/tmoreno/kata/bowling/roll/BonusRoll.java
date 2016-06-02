@@ -1,4 +1,4 @@
-package com.tmoreno.kata.bowling;
+package com.tmoreno.kata.bowling.roll;
 
 public class BonusRoll implements Roll {
 

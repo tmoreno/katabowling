@@ -6,6 +6,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.tmoreno.kata.bowling.roll.Roll;
+
 public class LineScoreWithSparesTest {
 
 	private List<Roll> line;

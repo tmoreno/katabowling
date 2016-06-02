@@ -6,6 +6,13 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.tmoreno.kata.bowling.roll.BonusRoll;
+import com.tmoreno.kata.bowling.roll.MissRoll;
+import com.tmoreno.kata.bowling.roll.Roll;
+import com.tmoreno.kata.bowling.roll.SpareRoll;
+import com.tmoreno.kata.bowling.roll.StrikeRoll;
+import com.tmoreno.kata.bowling.roll.WithPointsRoll;
+
 public class LineParserTest {
 
 	private List<Roll> line;
