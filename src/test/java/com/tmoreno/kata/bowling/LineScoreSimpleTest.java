@@ -8,8 +8,7 @@ import org.junit.Test;
 
 public class LineScoreSimpleTest {
 
-	private String line;
-	private List<Roll> line2;
+	private List<Roll> line;
 	private LineParser lineParser;
 	private LineScore lineScore;
 
@@ -20,54 +19,54 @@ public class LineScoreSimpleTest {
 
 	@Test
 	public void allMissGetZero() {
-		line2 = lineParser.parse("--------------------");
+		line = lineParser.parse("--------------------");
 
-		lineScore = new LineScore(line2);
+		lineScore = new LineScore(line);
 
 		Assert.assertEquals(0, lineScore.calc());
 	}
 
 	@Test
 	public void knockDownOnePinFirstTry() {
-		line2 = lineParser.parse("1-------------------");
+		line = lineParser.parse("1-------------------");
 
-		lineScore = new LineScore(line2);
+		lineScore = new LineScore(line);
 
 		Assert.assertEquals(1, lineScore.calc());
 	}
 
 	@Test
 	public void knockDownOnePinLastTry() {
-		line2 = lineParser.parse("-------------------1");
+		line = lineParser.parse("-------------------1");
 
-		lineScore = new LineScore(line2);
+		lineScore = new LineScore(line);
 
 		Assert.assertEquals(1, lineScore.calc());
 	}
 
 	@Test
 	public void knockDownTwoPinsSameFrame() {
-		line2 = lineParser.parse("11------------------");
+		line = lineParser.parse("11------------------");
 
-		lineScore = new LineScore(line2);
+		lineScore = new LineScore(line);
 
 		Assert.assertEquals(2, lineScore.calc());
 	}
 
 	@Test
 	public void knockDownPinsAllFrames() {
-		line2 = lineParser.parse("11111111111111111111");
+		line = lineParser.parse("11111111111111111111");
 
-		lineScore = new LineScore(line2);
+		lineScore = new LineScore(line);
 
 		Assert.assertEquals(20, lineScore.calc());
 	}
 
 	@Test
 	public void complexLine() {
-		line2 = lineParser.parse("9-9-9-9-9-9-9-9-9-9-");
+		line = lineParser.parse("9-9-9-9-9-9-9-9-9-9-");
 
-		lineScore = new LineScore(line2);
+		lineScore = new LineScore(line);
 
 		Assert.assertEquals(90, lineScore.calc());
 	}
