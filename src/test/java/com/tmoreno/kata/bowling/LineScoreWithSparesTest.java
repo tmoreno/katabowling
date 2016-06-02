@@ -38,9 +38,9 @@ public class LineScoreWithSparesTest {
 
 	@Test
 	public void complexLine() {
-		line = "5/5/5/5/5/5/5/5/5/5/5";
+		line2 = lineParser.parse("5/5/5/5/5/5/5/5/5/5/5");
 
-		lineScore = new LineScore(line);
+		lineScore = new LineScore(line2);
 
 		Assert.assertEquals(150, lineScore.calc());
 	}
